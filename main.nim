@@ -52,7 +52,7 @@ echo "The highest possible sum is: ", highestPossibleSum
 var sum: int = 0
 
 for i in 1 .. rolls:
-    let roll = rand(sides)
+    let roll = rand(1..int(sides))
     #echo "Roll ", i, " is a ", roll
     sum += roll
 
