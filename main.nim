@@ -5,7 +5,7 @@ import std/math
 # Call randomize() once to initialize the default random number generator.
 randomize()
 
-proc getNumberFromUser32(minInput: int32, maxInput: int32,
+proc getNumberFromUser(minInput: int32, maxInput: int32,
         question: string): int32 =
     let isMaxBigger = maxInput > minInput
     let min: int32 = if isMaxBigger: minInput else: maxInput
@@ -30,17 +30,13 @@ proc getNumberFromUser32(minInput: int32, maxInput: int32,
     chosenNumber
 
 
-proc getNumberFromUser8(minInput: int8, maxInput: int8,
-        question: string): int8 =
-    int8(getNumberFromUser32(minInput, maxInput, question))
-
 # Roll a die. Choose the # of sides and rolls. See how far from center.
 # let sidesInput: string = readLine(stdin)
-let sides: int8 = getNumberFromUser8(2, 20, "How many-sided die? ")
+let sides: int8 = int8(getNumberFromUser(2, 30, "How many-sided die? "))
 
 echo "You chose a ", sides, " sided die."
 
-let rolls: int32 = getNumberFromUser32(1, 1000000,
+let rolls: int32 = getNumberFromUser(1, 2000000,
         "How many times do you want to roll it? ")
 echo "You chose to roll the ", sides, " sided die ", rolls, " times."
 
@@ -69,6 +65,6 @@ let absoluteDistanceFromCenter: int =
 echo "Absolute distance from center is ", absoluteDistanceFromCenter
 
 let percentageFromCenter: int =
-    int((absoluteDistanceFromCenter / highestPossibleSum) * 100)
+    int((absoluteDistanceFromCenter / highestPossibleSum) * 200)
 
 echo "Percentage from center is ", percentageFromCenter
