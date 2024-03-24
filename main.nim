@@ -25,17 +25,30 @@ proc getNumberFromUser(minInput: int8, maxInput: int8, question: string): int8 =
     chosenNumber
 
 
-
 # Roll a die. Choose the # of sides and rolls. See how far from center.
 # let sidesInput: string = readLine(stdin)
 let sides: int8 = getNumberFromUser(2, 20, "How many-sided die? ")
 
 echo "You chose a ", sides, " sided die."
-echo "How many times do you want to roll it?"
 
-let rolls: int = parseInt(readLine(stdin))
+let rolls: int8 = getNumberFromUser(1, 20,
+        "How many times do you want to roll it? ")
 echo "You chose to roll the ", sides, " sided die ", rolls, " times."
 
 
-let newSide: int8 = getNumberFromUser(5, 14, "How many newside? ")
-echo "You chose ", newSide
+let highestPossibleSum: int = rolls * sides
+let middleNumber = int(((highestPossibleSum - rolls) / 2)) + int(rolls)
+
+echo "The lowest possible sum is: ", rolls
+echo "The middle possible sum is: ", middleNumber
+echo "The highest possible sum is: ", highestPossibleSum
+
+
+#[
+    Now we have our numbers
+    Time to calculate the middle RANGE
+    Then do the roll
+    and see how far off we were
+    both by raw numbers and percentages
+
+]#
