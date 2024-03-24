@@ -1,6 +1,5 @@
 import std/strutils
 import std/random
-import std/math
 
 # Call randomize() once to initialize the default random number generator.
 randomize()
