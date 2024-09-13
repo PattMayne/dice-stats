@@ -1,16 +1,26 @@
 import std/strutils
 import std/random
 
+
+#[
+    Choose the number of sides of a die, and how many times to roll it.
+    Calculate the maximum and minimum possible sums for the chosen numbers.
+    Add the rolls together.
+    Display how far we hit from middle of possible sums.
+    Display both raw numbers and percentage.
+]#
+
 # Call randomize() once to initialize the default random number generator.
 randomize()
 
+# Prompt user to choose a number, then validate the number.
 proc getNumberFromUser(minInput: int32, maxInput: int32,
         question: string): int32 =
     let isMaxBigger = maxInput > minInput
     let min: int32 = if isMaxBigger: minInput else: maxInput
     let max: int32 = if isMaxBigger: maxInput else: minInput
     let rangeString: string = "($1 to $2) " % [intToStr(min), intToStr(max)]
-    # "$1 eats $2." % ["The cat", "fish"]
+
     # These will store the chosen number after the checks
     var chosenNumber: int32 = min - 1
     var chosenNumberString = chosenNumber
@@ -29,7 +39,6 @@ proc getNumberFromUser(minInput: int32, maxInput: int32,
     chosenNumber
 
 
-# Roll a die. Choose the # of sides and rolls. See how far from center.
 # let sidesInput: string = readLine(stdin)
 let sides: int8 = int8(getNumberFromUser(2, 30, "How many-sided die? "))
 
@@ -63,7 +72,27 @@ let absoluteDistanceFromCenter: int =
 
 echo "Absolute distance from center is ", absoluteDistanceFromCenter
 
-let percentageFromCenter: int =
-    int((absoluteDistanceFromCenter / highestPossibleSum) * 200)
+#[
+    Display percentage from center (how far the rolled sum strayed
+    from the middle of the range of possible sums)
 
-echo "Percentage from center is ", percentageFromCenter
+    Only take the first five digits (or less) of the percentage:
+    Make a string of the percentage, check its length,
+    display a string of its length or else five digits,
+    whichever is lower (so max five digits).
+
+    The purpose is to demonstrate that the higher the number of rolls,
+    the closer to the center it is likely to hit.
+]#
+let percentageFromCenter: string =
+    $((absoluteDistanceFromCenter / highestPossibleSum) * 200)
+
+let indexOfFinalLetter: int = if percentageFromCenter.len() <
+        5: percentageFromCenter.len() - 1 else: 4
+
+
+let finalMessage: string = if indexOfFinalLetter > -1:
+    $percentageFromCenter[0..indexOfFinalLetter] & "% from the middle. "
+    else: "No percentage data"
+
+echo finalMessage
