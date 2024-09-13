@@ -82,7 +82,7 @@ echo "Absolute distance from center is ", absoluteDistanceFromCenter
     whichever is lower (so max five digits).
 
     The purpose is to demonstrate that the higher the number of rolls,
-    the closer to the center it is likely to hit.
+    the closer to the center it is likely to hit
 ]#
 let percentageFromCenter: string =
     $((absoluteDistanceFromCenter / highestPossibleSum) * 200)
