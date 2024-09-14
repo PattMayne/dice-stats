@@ -8,6 +8,9 @@ import std/random
     Add the rolls together.
     Display how far we hit from middle of possible sums.
     Display both raw numbers and percentage.
+
+    The purpose is to demonstrate that the higher the number of rolls,
+    the closer to the center it is likely to hit
 ]#
 
 # Call randomize() once to initialize the default random number generator.
@@ -79,9 +82,6 @@ echo "Absolute distance from center is ", absoluteDistanceFromCenter
     Make a string of the percentage, check its length,
     display a string of its length or else five digits,
     whichever is lower (so max five digits).
-
-    The purpose is to demonstrate that the higher the number of rolls,
-    the closer to the center it is likely to hit
 ]#
 let percentageFromCenter: string =
     $((absoluteDistanceFromCenter / highestPossibleSum) * 200)
