@@ -72,8 +72,8 @@ let absoluteDistanceFromCenter: int =
 echo "Absolute distance from center is ", absoluteDistanceFromCenter
 
 #[
-    Display percentage from center (how far the rolled sum strayed
-    from the middle of the range of possible sums)
+    Display percentage from center (how far the sum of all rolls
+    strayed from the middle of the range of possible sums)
 
     Only take the first five digits (or less) of the percentage:
     Make a string of the percentage, check its length,
